@@ -1,4 +1,4 @@
-package ch.noseryoung.plj.SpringBoot;
+package ch.noseryoung.plj.SpringBoot.User;
 
 public class User {
 
