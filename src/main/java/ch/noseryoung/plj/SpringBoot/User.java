@@ -7,8 +7,9 @@ public class User {
   private long id;
 
   public User() {
-    
+
   }
+
   public User(String firstName, String lastName, long id) {
     super();
     this.firstName = firstName;
