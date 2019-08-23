@@ -2,12 +2,15 @@ package ch.noseryoung.plj.SpringBoot.User;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+/**
+ * This is the Service Layer
+ * 
+ * @author Sina
+ */
 @Service
 public class UserService {
 
@@ -17,7 +20,6 @@ public class UserService {
   public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
-
   public Optional<User> getUserById(long id) {
     return userRepository.findById(id);
   }
@@ -41,4 +43,6 @@ public class UserService {
     userRepository.save(user);
     return user;
   }
+
+
 }

@@ -27,32 +27,61 @@ public class UserController {
     this.userService = userService;
   }
 
-  // localhost:8080/[parentMapping(users)]/[getMapping(thisIsMyGetMapping)]
-  @GetMapping("/{id}")
+  /**
+   * This Method returns a User with a specific ID
+   * 
+   * @param id
+   * @return ResponseEntity with the requested User
+   */
+  @GetMapping({ "/{id}", "/{id}/" })
   public @ResponseBody ResponseEntity<Optional<User>> getById(@PathVariable long id) {
     return new ResponseEntity<Optional<User>>(userService.getUserById(id), HttpStatus.OK);
   }
 
+  /**
+   * This method returns all the saved Users from the DB
+   * 
+   * @return ResponseEntity with a List containing all the Users
+   */
   @GetMapping({ "/", "" })
   public @ResponseBody ResponseEntity<List<User>> getAllUsers() {
     return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
   }
 
-  @PostMapping("/createUser")
+  /**
+   * This method creates a new User 
+   * 
+   * @param user
+   * @return ResponseEntity with the saved User and its new unique ID
+   */
+  @PostMapping({ "/createUser", "/createUser/" })
   public @ResponseBody ResponseEntity<User> postUser(@RequestBody User user) {
     return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
   }
 
-  @DeleteMapping("/{id}")
+  /**
+   * This method deletes an existing User
+   * 
+   * @param id
+   * @return ResponseEntity without any content
+   */
+  @DeleteMapping({ "/{id}", "/{id}/" })
   public @ResponseBody ResponseEntity<Long> deleteUser(@PathVariable long id) {
     userService.deleteUser(id);
     return new ResponseEntity<Long>(HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping("/{id}/{lastName}/{firstName}")
+  /**
+   * This method updates a user's data
+   * 
+   * @param id
+   * @param firstName
+   * @param lastName
+   * @return ResponseEntity with the updated User data
+   */
+  @PutMapping({ "/{id}/{lastName}/{firstName}", "/{id}/{lastName}/{firstName}/" })
   public @ResponseBody ResponseEntity<User> updateUser(@PathVariable long id, @PathVariable String firstName,
       @PathVariable String lastName) {
     return new ResponseEntity<User>(userService.updateUser(id, firstName, lastName), HttpStatus.OK);
   }
-
 }
