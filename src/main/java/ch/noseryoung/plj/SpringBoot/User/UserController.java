@@ -40,17 +40,19 @@ public class UserController {
 
   @PostMapping("/createUser")
   public @ResponseBody ResponseEntity<User> postUser(@RequestBody User user) {
-    return new ResponseEntity<User>(userService.saveAll(user), HttpStatus.CREATED);
+    return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
   }
 
- /* @DeleteMapping("/{id}")
+  @DeleteMapping("/{id}")
   public @ResponseBody ResponseEntity<Long> deleteUser(@PathVariable long id) {
-    return new ResponseEntity<Long>(userService.deleteUser(id), HttpStatus.NO_CONTENT);
+    userService.deleteUser(id);
+    return new ResponseEntity<Long>(HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping("/{id}")
-  public @ResponseBody ResponseEntity<Long> updateUser(@PathVariable long id) {
-    return new ResponseEntity<Long>(id, HttpStatus.OK);
-  } */
+  @PutMapping("/{id}/{lastName}/{firstName}")
+  public @ResponseBody ResponseEntity<User> updateUser(@PathVariable long id, @PathVariable String firstName,
+      @PathVariable String lastName) {
+    return new ResponseEntity<User>(userService.updateUser(id, firstName, lastName), HttpStatus.OK);
+  }
 
 }
