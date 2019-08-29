@@ -28,7 +28,7 @@ public class UserController {
   }
 
   /**
-   * This Method returns a User with a specific ID
+   * This method returns a User with a specific ID
    * 
    * @param id
    * @return ResponseEntity with the requested User
@@ -77,7 +77,7 @@ public class UserController {
    * @param id
    * @param firstName
    * @param lastName
-   * @return ResponseEntity with the updated User data
+   * @return ResponseEntity with the updated User 
    */
   @PutMapping({ "/{id}/{lastName}/{firstName}", "/{id}/{lastName}/{firstName}/" })
   public @ResponseBody ResponseEntity<User> updateUser(@PathVariable long id, @PathVariable String firstName,
